@@ -1,6 +1,6 @@
 
 def input_stat(stat_name):
-    return input_int(f"Please input your {stat_name} score: ", 20, 8)
+    return input_int(f"\nPlease input your {stat_name} score: ", 20, 8)
 
 def input_int(request: str, upper=float("inf"), lower=float("-inf")):
     while True:
@@ -27,7 +27,7 @@ def out_of_bounds_check(value: int, hi_lo: str, exceeded_bound: int):
         maxmin_str = "max"
     else:
         maxmin_str = "min"
-    print(f"The value ({value}) is {hi_lo}er than expected.")
+    print(f"\nThe value ({value}) is {hi_lo}er than expected.")
     print(f"The {maxmin_str}imum expected value was {exceeded_bound}.")
     if input_bool("Would you like to continue anyway? "):
         return True
@@ -54,12 +54,12 @@ class Stat:
     
     def __str__(self):
         if self.modifier > 0:
-            mod_string = f"+{self.modifier} "
+            mod_string = f"+{self.modifier}"
         else:
             mod_string = str(self.modifier)
         return f"{self.name} " + \
             f"({self.abbreviation}): " + \
-            f"({self.value} " + \
+            f"{self.value} " + \
             f"({mod_string}) "
 
 class Skill:
@@ -73,11 +73,13 @@ class Skills:
         
 class Character:
     def __init__(self):
-        print("Character creator initialised...")
+        print("Character creator initialised...\n")
         self.name = input("Please enter your character's name: ").title()
-        print("Next, we will define your character's stats.")
-        print("This number typically ranges from 8 to 18, ")
-        print("but can be as low as 1 and as high as 30.")
+        
+        print("\nNext, we will define your character's stats.")
+        print("This number typically ranges from 8 to 20, ")
+        print("but can be as low as 1 and as high as 30")
+        print("when magic items and story events are involved.")
         
         # character race
         
@@ -90,7 +92,7 @@ class Character:
         self.charisma       = Stat("Charisma"    , input_stat("Charisma"))
 
     def print_name(self):
-        print(f"Character name: {self.name}")
+        print(f"Character name: {self.name}\n")
 
     def print_stats(self):
         print(f"{self.strength}")
@@ -101,6 +103,7 @@ class Character:
         print(f"{self.charisma}")
         
 def print_char(char: Character):
+    print()
     char.print_name()
     char.print_stats()
 
@@ -110,3 +113,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# TODO justify the text printouts so they're easier to read
